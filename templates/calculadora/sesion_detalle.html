@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Detalle de la sesion</title>
+    <h1 style="color:blue">Detalle de la sesion: {{sesion}} </h1>
+</head>
+<body>
+    <hr width="60%" align="left"  style="border-color:blue;">
+    <h3 style="color:blue">Calculos almacenados</h3>
+    {% if calculos %}
+        {% for c in calculos %}
+            <p style="text-align:left;">{{c.operacion}} = {{c.resultado}}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

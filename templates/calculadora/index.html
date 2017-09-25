@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Calculadora Python</title>
+    <h1 style="color:green">Calculadora Python</h1>
+    <hr width="60%" align="left"  style="border-color:green;">
+</head>
+<body>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        <tr>
+            <h3 style="color:green">Calcular</h3>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" size=30 name="operacion" placeholder="Introduzca la operacion deseada"></input>
+            </td>
+            <td>
+                <button type="submit" name="btn_calcular" value="btn_calcular">=</button>
+            </td>
+            <td>
+                {{resultado}}
+            </td>
+        </tr>
+        </table>
+        <table>
+            <hr width="60%" align="left"  style="border-color:green;">
+            <tr>
+                <h3 style="color:green">Guardar Sesion</h3>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" size=30 name="nombre_sesion" placeholder="Introduzca un nombre para la sesion"></input>
+                </td>
+                <td>
+                    <button type="submit" name="btn_guardar" value="btn_guardar"> Guardar Sesion</button>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <hr width="60%" align="left"  style="border-color:green;">
+            <tr>
+                <h3 style="color:green">Sesiones Almacenadas</h3>
+            </tr>
+            <tr>
+              {% if sesiones %}
+                    <td>
+                        <ul>
+                            {% for s in sesiones %}
+                                <li>
+                                    <a href="{% url 'sesion_detalle' s.id %}">{{s}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+              {% endif %}
+            </tr>
+      </table>
+    </form>
+</body>
+</html>
